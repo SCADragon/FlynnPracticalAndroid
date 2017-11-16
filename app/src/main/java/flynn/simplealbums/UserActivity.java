@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -35,6 +36,11 @@ public class UserActivity extends AppCompatActivity {
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(UserList.getContext(),
                 DividerItemDecoration.VERTICAL);
         UserList.addItemDecoration(dividerItemDecoration);
+        try {
+            getSupportActionBar().setTitle(getString(R.string.select_friend));
+        }catch (NullPointerException e){
+            Log.d("Simple Album", "Exception:" + e.getMessage());
+        }
 
         new GetUserData().execute();
     }
